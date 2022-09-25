@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vending Machine</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="header">
+        <h1>
+            <img class="logo" src="images/logo.svg" alt="코카콜라 로고">
+        </h1>
+    </header>
+    <main class="main">
+        <section class="input">
+            <h2 class="visually-hidden">음료수를 선택하고 돈을 넣어주세요</h2>
+            <ul class="input-menu">
+                <li>
+                    <button class="input-menu-btn" type="button">
+                        <img src="images/Original_Cola.svg" alt="오리지널콜라">
+                        <p class="input-menu-btn-name">Original_Cola</p>
+                        <p class="input-menu-btn-price">1000원</p>
+                    </button>
+                </li>
+                <li>
+                    <button class="input-menu-btn" type="button">
+                        <img src="images/Violet_Cola.svg" alt="바이올렛콜라">
+                        <p class="input-menu-btn-name">Violet_Cola</p>
+                        <p class="input-menu-btn-price">1000원</p>
+                    </button>
+                </li>
+                <li>
+                    <button class="input-menu-btn" type="button">
+                        <img src="images/Yellow_Cola.svg" alt="옐로우콜라">
+                        <p class="input-menu-btn-name">Yellow_Cola</p>
+                        <p class="input-menu-btn-price">1000원</p>
+                    </button>
+                </li>
+                <li>
+                    <button class="input-menu-btn" type="button">
+                        <img src="images/Cool_Cola.svg" alt="쿨콜라">
+                        <p class="input-menu-btn-name">Cool_Cola</p>
+                        <p class="input-menu-btn-price">1000원</p>
+                    </button>
+                </li>
+                <li>
+                    <button class="input-menu-btn" type="button">
+                        <img src="images/Green_Cola.svg" alt="그린콜라">
+                        <p class="input-menu-btn-name">Green_Cola</p>
+                        <p class="input-menu-btn-price">1000원</p>
+                    </button>
+                </li>
+                <li>
+                    <button class="input-menu-btn" type="button">
+                        <img src="images/Orange_Cola.svg" alt="오렌지콜라">
+                        <p class="input-menu-btn-name">Orange_Cola</p>
+                        <p class="input-menu-btn-price">1000원</p>
+                    </button>
+                </li>
+            </ul>
+            <div class="input-cart">
+                <div class="input-cart-left">잔액 :<span id="left">1,000</span></div>
+                <button class="input-cart-left-btn">거스름돈 반환</button>
+                <input class="input-cart-deposit" type="number" placeholder="입금액 입력" id="deposit"></input>
+                <button class="input-cart-deposit-btn">입금</button>
+                <div class="input-cart- " class="">
+                    <div class="selection-item">
+                        <img src="images/Original_Cola.svg" alt="오리지널콜라">
+                        <p class="output-gaining-item-name">Original_Cola</p>
+                        <div class="output-gaining-item-quantity">1</div>
+                    </div>
+                </div>
+                <button class="input-cart-selection-btn">획득</button>
+            </div>
+        </section>
+        <section class="funds">
+            <h2 class="funds-balance">소지금 :<span id="balance">25,000</span> </h2>
+        </section>
+        <section class="output">
+            <h2>획득한 음료</h2>
+            <div class="output-gaining">
+                <div class="output-gaining-item">
+                    <img src="images/Original_Cola.svg" alt="오리지널콜라">
+                    <p class="output-gaining-item-name">Original_Cola</p>
+                    <div class="output-gaining-item-quantity">1</div>
+                </div>
+                <div class="output-gaining-item">
+                    <img src="images/Green_Cola.svg" alt="그린콜라">
+                    <p class="output-gaining-item-name">Green_Cola</p>
+                    <p class="output-gaining-item-quantity">2</p>
+                </div>
+                <div class="output-gaining-item">
+                    <img src="images/Orange_Cola.svg" alt="오렌지콜라">
+                    <p class="output-gaining-item-name">Orange_Cola</p>
+                    <p class="output-gaining-item-quantity">1</p>
+                </div>
+                <div class="output-gaining-item">
+                    <img src="images/Violet_Cola.svg" alt="바이올렛콜라">
+                    <p class="output-gaining-item-name">Violet_Cola</p>
+                    <p class="output-gaining-item-quantity">5</p>
+                </div>
+            </div>
+            <p class="output-total">총금액 : <span id="total">9,000</span></p>
+        </section>
+    </main>
+</body>
+
+</html>

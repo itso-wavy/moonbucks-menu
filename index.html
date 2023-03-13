@@ -1,125 +1,67 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="kr">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vending Machine</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <title>문벅스 메뉴</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="shortcut icon" href="src/images/favicon.ico" />
+  <link rel="icon" href="src/images/favicon.png" />
+  <link rel="stylesheet" href="src/css/index.css" />
 </head>
 
-<!-- 모바일 화면은 너비 360px에 최적화되어 있습니다 -->
 <body>
-    <header class="header">
-        <h1>
-            <img class="logo" src="images/logo.svg" alt="Cola Cola">
-        </h1>
-    </header>
-    <main class="main">
-        <section class="input">
-            <h2 class="visually-hidden">음료수를 선택하고 돈을 넣어주세요</h2>
-            <ul class="input-menu">
-                <li>
-                    <button class="input-menu-btn" type="button">
-                        <img src="images/Original_Cola.svg" alt="">
-                        <p class="input-menu-btn-name">Original_Cola</p>
-                        <strong class="input-menu-btn-price">1000원</strong>
-                    </button>
-                </li>
-                <li>
-                    <button class="input-menu-btn soldout" type="button">
-                        <img src="images/Violet_Cola.svg" alt="">
-                        <p class="input-menu-btn-name">Violet_Cola</p>
-                        <strong class="input-menu-btn-price">1000원</strong>
-                    </button>
-                </li>
-                <li>
-                    <button class="input-menu-btn" type="button">
-                        <img src="images/Yellow_Cola.svg" alt="">
-                        <p class="input-menu-btn-name">Yellow_Cola</p>
-                        <strong class="input-menu-btn-price">1000원</strong>
-                    </button>
-                </li>
-                <li>
-                    <button class="input-menu-btn" type="button">
-                        <img src="images/Cool_Cola.svg" alt="">
-                        <p class="input-menu-btn-name">Cool_Cola</p>
-                        <strong class="input-menu-btn-price">1000원</strong>
-                    </button>
-                </li>
-                <li>
-                    <button class="input-menu-btn" type="button">
-                        <img src="images/Green_Cola.svg" alt="">
-                        <p class="input-menu-btn-name">Green_Cola</p>
-                        <strong class="input-menu-btn-price">1000원</strong>
-                    </button>
-                </li>
-                <li>
-                    <button class="input-menu-btn" type="button">
-                        <img src="images/Orange_Cola.svg" alt="">
-                        <p class="input-menu-btn-name">Orange_Cola</p>
-                        <strong class="input-menu-btn-price">1000원</strong>
-                    </button>
-                </li>
-            </ul>
-            <div class="input-cart">
-                <div class="input-cart-left">잔액 :<strong class="price-type" id="left">1,000</strong></div>
-                <button class="input-cart-left-btn" type="button">거스름돈 반환</button>
-                <label for="deposit">
-                    <input class="input-cart-deposit" type="number" placeholder="입금액 입력" id="deposit">
-                </label>
-                <button class="input-cart-deposit-btn" type="button">입금</button>
-                <ul class="input-cart-selection">
-                    <li class="selected-item">
-                        <img src="images/Original_Cola.svg" alt="">
-                        <p class="selected-item-name">Original_Cola</p>
-                        <div class="selected-item-quantity">1</div>
-                    </li>
-                    <li class="selected-item">
-                        <img src="images/Green_Cola.svg" alt="">
-                        <p class="selected-item-name">Green_Cola</p>
-                        <p class="selected-item-quantity">2</p>
-                    </li>
-                    <li class="selected-item">
-                        <img src="images/Orange_Cola.svg" alt="">
-                        <p class="selected-item-name">Orange_Cola</p>
-                        <p class="selected-item-quantity">1</p>
-                    </li>
-                </ul>
-                <button class="input-cart-selection-btn" type="button">획득</button>
+  <div id="app" class="px-4">
+    <div class="d-flex justify-center mt-5 w-100">
+      <div class="w-100">
+        <header class="my-4">
+          <a href="/" class="text-black">
+            <h1 class="text-center font-bold">🌝 문벅스 메뉴 관리</h1>
+          </a>
+          <nav class="d-flex justify-center flex-wrap">
+            <button data-category-name="espresso" class="cafe-category-name btn bg-white shadow mx-1">
+              ☕ 에스프레소
+            </button>
+            <button data-category-name="frappuccino" class="cafe-category-name btn bg-white shadow mx-1">
+              🥤 프라푸치노
+            </button>
+            <button data-category-name="blended" class="cafe-category-name btn bg-white shadow mx-1">
+              🍹 블렌디드
+            </button>
+            <button data-category-name="teavana" class="cafe-category-name btn bg-white shadow mx-1">
+              🫖 티바나
+            </button>
+            <button data-category-name="desert" class="cafe-category-name btn bg-white shadow mx-1">
+              🍰 디저트
+            </button>
+          </nav>
+        </header>
+        <main class="mt-10 d-flex justify-center">
+          <div class="wrapper bg-white p-10">
+            <div class="heading d-flex justify-between">
+              <h2 class="mt-1">☕ 에스프레소 메뉴 관리</h2>
+              <span class="mr-2 mt-4 menu-count">총 0개</span>
             </div>
-        </section>
-        <section class="funds">
-            <h2 class="funds-balance">소지금 :<strong class="price-type" id="balance">25,000</strong> </h2>
-        </section>
-        <section class="output">
-            <h2>획득한 음료</h2>
-            <ul class="output-gaining">
-                <li class="selected-item">
-                    <img src="images/Original_Cola.svg" alt="">
-                    <p class="selected-item-name">Original_Cola</p>
-                    <div class="selected-item-quantity">1</div>
-                </li>
-                <li class="selected-item">
-                    <img src="images/Green_Cola.svg" alt="">
-                    <p class="selected-item-name">Green_Cola</p>
-                    <p class="selected-item-quantity">2</p>
-                </li>
-                <li class="selected-item">
-                    <img src="images/Orange_Cola.svg" alt="">
-                    <p class="selected-item-name">Orange_Cola</p>
-                    <p class="selected-item-quantity">1</p>
-                </li>
-                <li class="selected-item">
-                    <img src="images/Violet_Cola.svg" alt="">
-                    <p class="selected-item-name">Violet_Cola</p>
-                    <p class="selected-item-quantity">5</p>
-                </li>
-            </ul>
-            <p class="output-total">총금액 : <strong class="price-type" id="total">9,000</strong></p>
-        </section>
-    </main>
+            <form id="espresso-menu-form">
+              <div class="d-flex w-100">
+                <label for="espresso-menu-name" class="input-label" hidden>
+                  에스프레소 메뉴 이름
+                </label>
+                <input type="text" id="espresso-menu-name" name="espressoMenuName" class="input-field"
+                  placeholder="에스프레소 메뉴 이름" autocomplete="off" />
+                <button type="button" name="submit" id="espresso-menu-submit-button"
+                  class="input-submit bg-green-600 ml-2">
+                  확인
+                </button>
+              </div>
+            </form>
+            <ul id="espresso-menu-list" class="mt-3 pl-0"></ul>
+          </div>
+        </main>
+      </div>
+    </div>
+  </div>
+  <script type="module" src="./src/js/index.js"></script>
 </body>
 
 </html>

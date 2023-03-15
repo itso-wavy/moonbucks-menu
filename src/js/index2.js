@@ -1,19 +1,16 @@
 // - localStorage Write & Read
-//  - [ ]  메뉴 추가, 수정, 삭제시 데이터를 localStorage에 저장한다.
-//  - [ ]  새로고침시 localStorage에 있는 데이터를 불러온다.
+//     - [ ]  메뉴 추가, 수정, 삭제시 데이터를 localStorage에 저장한다.
+//     - [ ]  새로고침시 localStorage에 있는 데이터를 읽어온다.
 // - 메뉴판 관리
-//  - [ ]  에스프레소 메뉴판 관리
-//  - [ ]  프라푸치노 메뉴판 관리
-//  - [ ]  블렌디드 메뉴판 관리
-//  - [ ]  티바나 메뉴판 관리
-//  - [ ]  디저트 메뉴판 관리
+//     - [ ]  에스프레소 메뉴판 관리
+//     - [ ]  프라푸치노 메뉴판 관리
+//     - [ ]  블렌디드 메뉴판 관리
+//     - [ ]  티바나 메뉴판 관리
+//     - [ ]  디저트 메뉴판 관리
 // - 페이지 접근시 최초 데이터 Read & Rendering
-//  - [ ]  새로고침시 localStorage의 에스프레소 메뉴를 불러온다.
-//  - [ ]  에스프레소 메뉴를 페이지에 그려준다.
+//     - [ ]  새로고침시 localStorage의 에스프레소 메뉴를 읽어온다.
+//     - [ ]  에스프레소 메뉴를 페이지에 그려준다.
 // - 품절 상태 관리
-//  - [ ]  품절 상품에 품절 버튼을 추가한다.
-//  - [ ]  품절 버튼을 클릭하면 상품에 `sold-out` class를 추가한다.
-//  - [ ]  품절 버튼을 클릭하면 localStorage에 상태값이 저장된다.
 
 const $ = (selector) => document.querySelector(selector);
 
@@ -22,7 +19,7 @@ const store = {
     localStorage.setItem('menu', JSON.stringify(menu));
   },
   getLocalStorage() {
-    JSON.parse(localStorage.getItem('menu'));
+    return JSON.parse(localStorage.getItem('menu'));
   },
 };
 
@@ -31,7 +28,7 @@ function App() {
   // 데이터 관리- ① 에스프레소, ② 티바나, ...
 
   this.menu = []; // 초기화
-  // this.menu = store.getLocalStorage();
+
   const handleMenuCount = () => {
     $('.menu-count').textContent = `총 ${
       $('#espresso-menu-list').querySelectorAll('li').length
@@ -49,7 +46,7 @@ function App() {
     const template = this.menu
       .map((item, index) => {
         return `
-    <li data-menu-id="${index}" class="menu-list-item d-flex items-center py-2">
+    <li data-menu-id='${index}' class="menu-list-item d-flex items-center py-2">
       <span class="w-100 pl-2 menu-name">${item.name}</span>
       <button
         type="button"
@@ -73,31 +70,25 @@ function App() {
   };
 
   const editMenu = (e) => {
-    if (e.target.classList.contains('menu-edit-button')) {
-      const menuId = e.target.closest('li').dataset.menuId;
-      const $menuName = e.target.closest('li').querySelector('.menu-name');
-      const updatedMenuName = prompt(
-        '메뉴를 수정해주세요',
-        $menuName.textContent
-      );
-      this.menu[menuId].name = updatedMenuName;
-      store.setLocalStorage(this.menu);
-      $menuName.textContent = updatedMenuName;
-    }
+    const menuId = e.target.closest('li').dataset.menuId;
+    const $menuName = e.target.closest('li').querySelector('.menu-name');
+    const updatedMenuName = prompt('메뉴를 수정하세요', $menuName.textContent);
+    this.menu[menuId].name = updatedMenuName;
+    store.setLocalStorage(this.menu);
+    $menuName.textContent = updatedMenuName;
   };
+  // };
 
   const deleteMenu = (e) => {
-    if (e.target.classList.contains('menu-remove-button')) {
-      if (confirm('정말 삭제하시겠습니까?')) {
-        e.target.closest('li').remove();
-        handleMenuCount();
-      }
+    if (confirm('정말 삭제하시겠습니까?')) {
+      e.target.closest('li').remove();
+      handleMenuCount();
     }
   };
 
   $('#espresso-menu-list').addEventListener('click', (e) => {
-    editMenu(e);
-    deleteMenu(e);
+    if (e.target.classList.contains('menu-edit-button')) editMenu(e);
+    if (e.target.classList.contains('menu-remove-button')) deleteMenu(e);
   });
 
   $('#espresso-menu-form').addEventListener('submit', (e) =>

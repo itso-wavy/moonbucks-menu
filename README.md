@@ -14,8 +14,6 @@
   </a>
 </p>
 
-## 🔥 Projects!
-
 <p align="middle">
   <img width="400" src="./src/images/moonbucks-main.png">
 </p>
@@ -69,35 +67,53 @@
 
 ## 🎯 step2 요구사항 - 상태 관리로 메뉴 관리하기
 
-- [ ] [localStorage](https://developer.mozilla.org/ko/docs/Web/API/Window/localStorage)에 데이터를 저장하여 새로고침해도 데이터가 남아있게 한다.
-- [ ] 에스프레소, 프라푸치노, 블렌디드, 티바나, 디저트 각각의 종류별로 메뉴판을 관리할 수 있게 만든다.
-  - [ ] 페이지에 최초로 접근할 때는 에스프레소 메뉴가 먼저 보이게 한다.
-- [ ] 품절 상태인 경우를 보여줄 수 있게, 품절 버튼을 추가하고 `sold-out` class를 추가하여 상태를 변경한다.
-- 품절 상태 메뉴의 마크업
+- localStorage Write & Read
 
-```js
-<li class="menu-list-item d-flex items-center py-2">
-  <span class="w-100 pl-2 menu-name sold-out">${name}</span>
-  <button
-    type="button"
-    class="bg-gray-50 text-gray-500 text-sm mr-1 menu-sold-out-button"
-  >
-    품절
-  </button>
-  <button
-    type="button"
-    class="bg-gray-50 text-gray-500 text-sm mr-1 menu-edit-button"
-  >
-    수정
-  </button>
-  <button
-    type="button"
-    class="bg-gray-50 text-gray-500 text-sm menu-remove-button"
-  >
-    삭제
-  </button>
-</li>
-```
+  - [x] 메뉴 추가, 수정, 삭제시 데이터를 localStorage에 저장한다.
+  - [ ] 새로고침시 localStorage에 있는 데이터를 불러온다.
+
+- 메뉴판 관리
+
+  - [x] 에스프레소 메뉴판 관리
+  - [ ] 프라푸치노 메뉴판 관리
+  - [ ] 블렌디드 메뉴판 관리
+  - [ ] 티바나 메뉴판 관리
+  - [ ] 디저트 메뉴판 관리
+
+- 페이지 접근시 최초 데이터 Read & Rendering
+
+  - [ ] 새로고침시 localStorage의 에스프레소 메뉴를 불러온다.
+  - [ ] 에스프레소 메뉴를 페이지에 그려준다.
+
+- 품절 상태 관리
+
+  - [ ] 품절 상품에 품절 버튼을 추가한다.
+  - [ ] 품절 버튼을 클릭하면 상품에 `sold-out` class를 추가한다.
+  - [ ] 품절 버튼을 클릭하면 localStorage에 상태값이 저장된다.
+
+    ```js
+    <li class="menu-list-item d-flex items-center py-2">
+      <span class="w-100 pl-2 menu-name sold-out">${name}</span>
+      <button
+        type="button"
+        class="bg-gray-50 text-gray-500 text-sm mr-1 menu-sold-out-button"
+      >
+        품절
+      </button>
+      <button
+        type="button"
+        class="bg-gray-50 text-gray-500 text-sm mr-1 menu-edit-button"
+      >
+        수정
+      </button>
+      <button
+        type="button"
+        class="bg-gray-50 text-gray-500 text-sm menu-remove-button"
+      >
+        삭제
+      </button>
+    </li>
+    ```
 
 ## 🎯 step3 요구사항 - 서버와의 통신을 통해 메뉴 관리하기
 
@@ -143,8 +159,8 @@
 {
   response: [
     {
-      id: "string",
-      name: "string",
+      id: 'string',
+      name: 'string',
       isSoldOut: Boolean,
     },
   ];
